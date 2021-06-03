@@ -13,7 +13,7 @@ import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 export class NewsComponent implements OnInit {
 
   paginator = {
-    per_page: 1,
+    per_page: 10,
     current_page: 1,
     last_page: 1,
     total: 0,
@@ -104,7 +104,7 @@ export class NewsComponent implements OnInit {
    * Make Array Count For Buttons
    *
    * @param {number} i
-   * @return {*} 
+   * @return {*}
    * @memberof NewsComponent
    */
   makeArray(i: number) {

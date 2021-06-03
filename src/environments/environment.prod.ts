@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  huUrl: 'http://hu-api.home-university.com'
+  huUrl: 'https://hu-api.home-university.com'
 };
