@@ -6,36 +6,31 @@ import { MENU_ITEMS } from '../menu-items';
 @Component({
   selector: 'app-mobile-sidebar',
   templateUrl: './mobile-sidebar.component.html',
-  styleUrls: ['./mobile-sidebar.component.css']
+  styleUrls: ['./mobile-sidebar.component.css'],
 })
 export class MobileSidebarComponent implements OnInit {
+  MENU_ITEMS = MENU_ITEMS;
 
-  MENU_ITEMS = MENU_ITEMS
+  activeRoute = '';
 
-  activeRoute = ''
-
-  constructor(
-    private router: Router
-  ) {
+  constructor(private router: Router) {
     this.activeRoute = this.router.url;
 
     this.MENU_ITEMS.forEach((result) => {
       if (this.activeRoute.toString().includes(result.route.toString())) {
-        result.isActive = true
+        result.isActive = true;
       }
-    })
+    });
 
     this.router.events
-      .pipe(filter(event => event instanceof NavigationStart))
+      .pipe(filter((event) => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
         // You only receive NavigationStart events
-        this.activeRoute = event.url
+        this.activeRoute = event.url;
       });
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
   /**
    * Activates Menu
@@ -46,13 +41,23 @@ export class MobileSidebarComponent implements OnInit {
   openMenu(index) {
     if (!this.MENU_ITEMS[index].isActive) {
       this.MENU_ITEMS.forEach((menu) => {
-        menu.isActive = false
-      })
-      this.MENU_ITEMS[index].isActive = !this.MENU_ITEMS[index].isActive
+        menu.isActive = false;
+      });
+      this.MENU_ITEMS[index].isActive = !this.MENU_ITEMS[index].isActive;
     } else {
     }
 
-    this.activeRoute = this.MENU_ITEMS[index].route.toString()
-    this.router.navigate([this.MENU_ITEMS[index].route])
+    this.activeRoute = this.MENU_ITEMS[index].route.toString();
+    this.router.navigate([this.MENU_ITEMS[index].route]);
+  }
+
+  /**
+   * Logout Current User
+   *
+   * @memberof MobileSidebarComponent
+   */
+  logoutSession() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/auth/login']);
   }
 }
