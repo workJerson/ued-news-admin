@@ -1,4 +1,4 @@
-import { MenuItem } from "../models/menu-item.model";
+import { MenuItem } from '../models/menu-item.model';
 
 export const MENU_ITEMS: MenuItem[] = [
   {
@@ -19,30 +19,41 @@ export const MENU_ITEMS: MenuItem[] = [
         isActive: false,
         route: 'NA',
       },
-    ]
+    ],
   },
   {
     icon: 'NA',
     name: 'News',
     isActive: false,
     route: '/main/news',
-    children: [
-    ]
+    children: [],
   },
   {
     icon: 'NA',
     name: 'Students',
     isActive: false,
     route: '/main/students',
-    children: [
-    ]
+    children: [],
   },
   {
     icon: 'NA',
     name: 'Enrollees',
     isActive: false,
     route: '/main/enrollees',
-    children: [
-    ]
+    children: [],
   },
-]
+  {
+    icon: 'NA',
+    name: 'Testimonials',
+    isActive: false,
+    route: '/main/testimonials',
+    children: [],
+  },
+  {
+    icon: 'NA',
+    name: 'Schools',
+    isActive: false,
+    route: '/main/schools',
+    children: [],
+  },
+];
