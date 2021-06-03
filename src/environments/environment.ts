@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  huUrl: 'http://huniversityapi-env-dev.us-east-1.elasticbeanstalk.com'
+  huUrl: 'https://hu-api-dev.home-university.com'
 };
 
 /*
