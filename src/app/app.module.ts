@@ -21,6 +21,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { StudentsComponent } from './pages/students/students.component';
 import { EnrolleesComponent } from './pages/enrollees/enrollees.component';
+import { SchoolComponent } from './pages/school/school.component';
+import { CreateSchoolComponent } from './pages/school/create-school/create-school.component';
+import { ViewSchoolComponent } from './pages/school/view-school/view-school.component';
+import { UpdateSchoolComponent } from './pages/school/update-school/update-school.component';
+import { TestimonialComponent } from './pages/testimonial/testimonial.component';
+import { UpdateTestimonialComponent } from './pages/testimonial/update-testimonial/update-testimonial.component';
+import { ViewTestimonialComponent } from './pages/testimonial/view-testimonial/view-testimonial.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,13 @@ import { EnrolleesComponent } from './pages/enrollees/enrollees.component';
     DashboardComponent,
     StudentsComponent,
     EnrolleesComponent,
+    SchoolComponent,
+    CreateSchoolComponent,
+    ViewSchoolComponent,
+    UpdateSchoolComponent,
+    TestimonialComponent,
+    UpdateTestimonialComponent,
+    ViewTestimonialComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,4 +67,4 @@ import { EnrolleesComponent } from './pages/enrollees/enrollees.component';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

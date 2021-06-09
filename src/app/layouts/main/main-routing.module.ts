@@ -5,39 +5,57 @@ import { MainComponent } from './main.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: MainComponent,
     children: [
       {
-        path: "",
-        redirectTo: "dashboard",
-        pathMatch: "full",
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
       },
       {
-        path: "dashboard",
+        path: 'dashboard',
         component: DashboardComponent,
       },
       {
-        path: "news",
+        path: 'news',
         loadChildren: () =>
-          import("../../pages/news/news.module").then((m) => m.NewsModule)
+          import('../../pages/news/news.module').then((m) => m.NewsModule),
       },
       {
-        path: "students",
+        path: 'students',
         loadChildren: () =>
-          import("../../pages/students/students.module").then((m) => m.StudentsModule)
+          import('../../pages/students/students.module').then(
+            (m) => m.StudentsModule
+          ),
       },
       {
-        path: "enrollees",
+        path: 'enrollees',
         loadChildren: () =>
-          import("../../pages/enrollees/enrollees.module").then((m) => m.EnrolleesModule)
+          import('../../pages/enrollees/enrollees.module').then(
+            (m) => m.EnrolleesModule
+          ),
       },
-    ]
+      {
+        path: 'testimonials',
+        loadChildren: () =>
+          import('../../pages/testimonial/testimonial.module').then(
+            (m) => m.TestimonialModule
+          ),
+      },
+      {
+        path: 'schools',
+        loadChildren: () =>
+          import('../../pages/school/school.module').then(
+            (m) => m.SchoolModule
+          ),
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}

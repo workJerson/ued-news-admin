@@ -1,11 +1,11 @@
 <div class="container h-full px-6 mx-auto pb-4">
   <ngx-spinner type="ball-spin-clockwise" size="medium"> </ngx-spinner>
   <h2 class="my-6 text-4xl font-semibold text-gray-700 dark:text-gray-200">
-    News
+    Testimonials
   </h2>
   <div class="flex justify-end m-4">
     <button
-      (click)="createNews()"
+      (click)="createTestimony()"
       class="
         flex
         items-center
@@ -27,7 +27,7 @@
         focus:shadow-outline-purple
       "
     >
-      Create News
+      Create Testimony
     </button>
   </div>
   <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -48,39 +48,37 @@
               dark:bg-gray-800
             "
           >
-            <th class="px-4 py-3">News Title</th>
-            <th class="px-4 py-3">News Status</th>
-            <th class="px-4 py-3">News Category</th>
-            <th class="px-4 py-3">Published By</th>
-            <th class="px-4 py-3">Date Created</th>
+            <th class="px-4 py-3">First Name</th>
+            <th class="px-4 py-3">Last Name</th>
+            <th class="px-4 py-3">Testimony</th>
+            <th class="px-4 py-3">Status</th>
             <th class="px-4 py-3">Actions</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-          <ng-container *ngIf="newsList.length != 0; else noData">
+          <ng-container *ngIf="testimonialList.length != 0; else noData">
             <tr
-              *ngFor="let news of newsList"
+              *ngFor="let testimony of testimonialList"
               class="text-gray-700 dark:text-gray-400"
             >
               <td class="px-4 py-3">
                 <div class="flex items-center text-sm">
                   <div>
-                    <p class="font-semibold">{{ news?.title || "--" }}</p>
+                    <p class="font-semibold">
+                      {{ testimony?.first_name || "--" }}
+                    </p>
                   </div>
                 </div>
               </td>
-              <td class="px-4 py-3 text-sm">
-                <span *ngIf="news?.status == 0"> Unpublished </span>
-                <span *ngIf="news?.status == 1"> Published </span>
-              </td>
               <td class="px-4 py-3 text-xs">
-                {{ news?.category?.name || "--" }}
+                {{ testimony?.last_name || "--" }}
               </td>
               <td class="px-4 py-3 text-sm">
-                {{ news?.created_by?.detail?.full_name || "--" }}
+                {{ testimony?.testimony || "--" }}
               </td>
               <td class="px-4 py-3 text-sm">
-                {{ news?.created_at | date: "medium" }}
+                <span *ngIf="testimony?.status == 0"> Inactive </span>
+                <span *ngIf="testimony?.status == 1"> Active </span>
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
