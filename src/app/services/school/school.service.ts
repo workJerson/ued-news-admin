@@ -25,10 +25,11 @@ export class SchoolService {
     return this.http.get(`${environment.huUrl}/api/school/${id}`);
   }
 
-  updateSchoolById(payload): Observable<any> {
-    return this.http.patch(
-      `${environment.huUrl}/api/school/${payload.id}`,
-      payload
-    );
+  updateSchoolById({ payload }): Observable<any> {
+    return this.http.post(`${environment.huUrl}/api/school/update`, payload);
+  }
+
+  createSchool(payload): Observable<any> {
+    return this.http.post(`${environment.huUrl}/api/school`, payload);
   }
 }

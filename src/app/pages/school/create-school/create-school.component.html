@@ -1,1 +1,171 @@
-<p>create-school works!</p>
+<div class="container h-full px-6 mx-auto pb-4">
+  <ngx-spinner></ngx-spinner>
+  <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    Create School
+  </h2>
+  <div class="p-5 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <form [formGroup]="schoolForm">
+      <div class="flex flex-row w-full">
+        <ngx-dropzone
+          accept="image/jpeg,image/jpg,image/png"
+          class="w-full mb-2"
+          (change)="onSelect($event)"
+        >
+          <ngx-dropzone-label>Drop your files here!</ngx-dropzone-label>
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            *ngFor="let f of files"
+            [file]="f"
+          >
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+      </div>
+      <div class="grid grid-cols-8 gap-6">
+        <div class="col-span-8 sm:col-span-4">
+          <label
+            for="school_name"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >School Name</label
+          >
+          <input
+            formControlName="name"
+            type="text"
+            name="school_name"
+            id="school_name"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-indigo-500
+              focus:border-indigo-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+          <label
+            for="school_order"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Order</label
+          >
+          <input
+            formControlName="order"
+            type="text"
+            name="school_order"
+            id="school_order"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-indigo-500
+              focus:border-indigo-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
+        </div>
+        <div class="col-span-8 sm:col-span-4">
+          <label
+            for="school_email"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >School Email</label
+          >
+          <input
+            formControlName="school_email"
+            type="text"
+            name="school_email"
+            id="school_email"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-indigo-500
+              focus:border-indigo-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
+        </div>
+        <div class="col-span-8 sm:col-span-4">
+          <label
+            for="school_address"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >School Address</label
+          >
+          <input
+            formControlName="address"
+            type="text"
+            name="school_address"
+            id="school_address"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-indigo-500
+              focus:border-indigo-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
+        </div>
+      </div>
+      <div class="flex justify-end mt-4">
+        <button
+          (click)="submitSchool()"
+          class="
+            flex
+            items-center
+            justify-between
+            px-4
+            py-2
+            text-sm
+            font-medium
+            leading-5
+            text-white
+            transition-colors
+            duration-150
+            bg-purple-600
+            border border-transparent
+            rounded-lg
+            active:bg-purple-600
+            hover:bg-purple-700
+            focus:outline-none
+            focus:shadow-outline-purple
+          "
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

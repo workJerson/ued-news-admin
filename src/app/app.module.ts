@@ -28,6 +28,7 @@ import { UpdateSchoolComponent } from './pages/school/update-school/update-schoo
 import { TestimonialComponent } from './pages/testimonial/testimonial.component';
 import { UpdateTestimonialComponent } from './pages/testimonial/update-testimonial/update-testimonial.component';
 import { ViewTestimonialComponent } from './pages/testimonial/view-testimonial/view-testimonial.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ViewTestimonialComponent } from './pages/testimonial/view-testimonial/v
     StoreModule.forRoot(reducers, { metaReducers }),
     NgxSpinnerModule,
     ToastrModule.forRoot(),
+    NgxDropzoneModule,
   ],
   providers: [
     {

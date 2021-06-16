@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  huUrl: 'https://hu-api.home-university.com'
+  huUrl: 'https://hu-api-dev.home-university.com',
 };
 
 /*

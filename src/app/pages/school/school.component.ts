@@ -38,12 +38,12 @@ export class SchoolComponent implements OnInit {
   }
 
   /**
-   * Redirects to Create News Page
+   * Create New School
    *
-   * @memberof NewsComponent
+   * @memberof SchoolComponent
    */
-  createNews() {
-    this.router.navigate(['/main/news/create']);
+  createSchool() {
+    this.router.navigate(['/main/schools/create']);
   }
 
   /**
@@ -128,5 +128,9 @@ export class SchoolComponent implements OnInit {
   movePage(page: number) {
     this.paginator.current_page = page;
     this.getListOfSchool(this.paginator);
+  }
+
+  updateSchool(id) {
+    this.router.navigate([`/main/schools/update/${id}`]);
   }
 }
