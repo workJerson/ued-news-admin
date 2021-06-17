@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
@@ -22,6 +23,7 @@ export class MainComponent implements OnInit {
   isProfileMenuOpen: boolean = false
 
   constructor(
+    private router: Router,
     private store: Store<RootState>
   ) {
     this.store.pipe(select(selectUser), take(1))
@@ -57,4 +59,14 @@ export class MainComponent implements OnInit {
   openProfileMenu() {
     this.isProfileMenuOpen = !this.isProfileMenuOpen
   }
+
+    /**
+   * Logs Out The Current User
+   *
+   * @memberof SidebarComponent
+   */
+     logoutSession() {
+      localStorage.removeItem('user');
+      this.router.navigate(['/auth/login']);
+    }
 }
