@@ -18,37 +18,9 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path: 'news',
+        path: 'articles',
         loadChildren: () =>
-          import('../../pages/news/news.module').then((m) => m.NewsModule),
-      },
-      {
-        path: 'students',
-        loadChildren: () =>
-          import('../../pages/students/students.module').then(
-            (m) => m.StudentsModule
-          ),
-      },
-      {
-        path: 'enrollees',
-        loadChildren: () =>
-          import('../../pages/enrollees/enrollees.module').then(
-            (m) => m.EnrolleesModule
-          ),
-      },
-      {
-        path: 'testimonials',
-        loadChildren: () =>
-          import('../../pages/testimonial/testimonial.module').then(
-            (m) => m.TestimonialModule
-          ),
-      },
-      {
-        path: 'schools',
-        loadChildren: () =>
-          import('../../pages/school/school.module').then(
-            (m) => m.SchoolModule
-          ),
+          import('../../pages/article/article.module').then((m) => m.ArticleModule),
       },
     ],
   },

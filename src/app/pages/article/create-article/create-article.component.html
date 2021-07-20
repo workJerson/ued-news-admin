@@ -1,0 +1,46 @@
+<div class="container h-full px-6 mx-auto pb-4">
+  <ngx-spinner></ngx-spinner>
+  <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    Create Article
+  </h2>
+  <div class="p-5 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <form [formGroup]="newsForm">
+      <div class="grid grid-cols-6 gap-6">
+        <div class="col-span-6 sm:col-span-4">
+          <label for="header" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Header</label>
+          <input formControlName="header" type="text" name="header" id="header" autocomplete=""
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+          <label for="video_path" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Video Path</label>
+          <input formControlName="video_path" type="text" name="video_path" id="video_path" autocomplete=""
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+          <label for="thumbnail_path" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Thumbnail Path</label>
+          <input formControlName="thumbnail_path" type="text" name="thumbnail_path" id="thumbnail_path" autocomplete=""
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+          <label for="article_category" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Article
+            Category</label>
+          <select formControlName="article_category_id" name="article_category" id="article_category" autocomplete=""
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+            <option *ngFor="let category of newsCategories" [value]="category?.id">{{ category?.name }}</option>
+          </select>
+        </div>
+        <div class="col-span-6">
+          <!-- <angular-editor [placeholder]="'Enter text here...'" [config]="editorConfig"></angular-editor> -->
+          <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="model.editorData"
+            [ngModelOptions]="{standalone: true}"></ckeditor>
+        </div>
+      </div>
+      <div class="flex justify-end mt-4">
+        <button (click)="submitNews()"
+          class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

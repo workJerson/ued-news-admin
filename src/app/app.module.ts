@@ -11,7 +11,7 @@ import { AuthComponent } from './layouts/auth/auth.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { NewsComponent } from './pages/news/news.component';
+import { ArticleComponent } from './pages/article/article.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './interceptor/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,15 +19,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
-import { StudentsComponent } from './pages/students/students.component';
-import { EnrolleesComponent } from './pages/enrollees/enrollees.component';
-import { SchoolComponent } from './pages/school/school.component';
-import { CreateSchoolComponent } from './pages/school/create-school/create-school.component';
-import { ViewSchoolComponent } from './pages/school/view-school/view-school.component';
-import { UpdateSchoolComponent } from './pages/school/update-school/update-school.component';
-import { TestimonialComponent } from './pages/testimonial/testimonial.component';
-import { UpdateTestimonialComponent } from './pages/testimonial/update-testimonial/update-testimonial.component';
-import { ViewTestimonialComponent } from './pages/testimonial/view-testimonial/view-testimonial.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
@@ -36,15 +27,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     LoginComponent,
     ForgotPasswordComponent,
     DashboardComponent,
-    StudentsComponent,
-    EnrolleesComponent,
-    SchoolComponent,
-    CreateSchoolComponent,
-    ViewSchoolComponent,
-    UpdateSchoolComponent,
-    TestimonialComponent,
-    UpdateTestimonialComponent,
-    ViewTestimonialComponent,
   ],
   imports: [
     BrowserModule,
