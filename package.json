@@ -31,6 +31,7 @@
     "@tailwindcss/typography": "^0.4.0",
     "angular-froala-wysiwyg": "^3.2.6-1",
     "ng-click-outside": "^7.0.1",
+    "ngx-dropzone": "^3.0.0",
     "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.2.0",
     "rxjs": "^6.6.3",

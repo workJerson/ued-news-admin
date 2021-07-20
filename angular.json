@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "hu-admin"
+  "defaultProject": "hu-admin",
+  "cli": {
+    "analytics": "070514cb-5594-43f6-a636-a05494c44e44"
+  }
 }
