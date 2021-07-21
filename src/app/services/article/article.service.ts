@@ -80,6 +80,13 @@ export class ArticleService {
     return this.http.patch(`${environment.huUrl}/api/articles/${payload.id}`, payload)
   }
 
+  /**
+   * Delete News By Id
+   *
+   * @param {*} id
+   * @returns {Observable<any>}
+   * @memberof ArticleService
+   */
   deleteNewsById(id: any): Observable<any> {
     return this.http.delete(`${environment.huUrl}/api/articles/${id}`)
   }
