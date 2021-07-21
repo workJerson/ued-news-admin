@@ -6,3 +6,17 @@ export interface User {
   token_type: string;
   user: UserDetails
 }
+
+export class CreateUserModel {
+
+}
+
+export class GetUserModel {
+
+}
+
+export class UpdateUserModel {
+
+}
+
+

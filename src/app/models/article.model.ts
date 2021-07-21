@@ -1,3 +1,7 @@
+import { GetArticleCategoryModel } from "./article-category.model"
+import { GetTagsModel } from "./tags.model"
+import { GetUserModel } from "./user.model"
+
 export class Article {
   header: string
   video_path: string
@@ -7,12 +11,13 @@ export class Article {
 }
 
 export class CreateArticleModel extends Article {
-
+  tag_ids: []
 }
 
-export class GetArticleModel extends CreateArticleModel {
-  user: object
-  article_category: object
+export class GetArticleModel extends Article {
+  user: GetUserModel
+  article_category: GetArticleCategoryModel
+  tags: GetTagsModel[]
 }
 
 export class UpdateArticleModel extends CreateArticleModel {
