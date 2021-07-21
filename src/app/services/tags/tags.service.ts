@@ -12,7 +12,58 @@ export class TagsService {
     private http: HttpClient
   ) { }
 
-  getTagsList(params?: string): Observable<any> {
+  /**
+   * Get List of Tags
+   *
+   * @param {string} [params]
+   * @returns {Observable<any>}
+   * @memberof TagsService
+   */
+  getTagsList(params = ''): Observable<any> {
     return this.http.get(`${environment.huUrl}/api/tags?${params}`)
+  }
+
+  /**
+   * Create new Tag record
+   *
+   * @param {*} payload
+   * @returns {Observable<any>}
+   * @memberof TagsService
+   */
+  createTag(payload:any): Observable<any> {
+    return this.http.post(`${environment.huUrl}/api/tags`, payload)
+  }
+
+  /**
+   * Get Tag by Id
+   *
+   * @param {*} id
+   * @returns {Observable<any>}
+   * @memberof TagsService
+   */
+  getTagById(id: any): Observable<any>{
+    return this.http.get(`${environment.huUrl}/api/tags/${id}`)
+  }
+
+  /**
+   * Update Tag by Id
+   *
+   * @param {*} payload
+   * @returns {Observable<any>}
+   * @memberof TagsService
+   */
+  updateTagById(payload:any): Observable<any> {
+    return this.http.patch(`${environment.huUrl}/api/tags/${payload?.id}`, payload)
+  }
+
+  /**
+   * Delete Tag by id
+   *
+   * @param {*} id
+   * @returns {Observable<any>}
+   * @memberof TagsService
+   */
+  deleteTagById(id:any): Observable<any> {
+    return this.http.delete(`${environment.huUrl}/api/tags/${id}`)
   }
 }
