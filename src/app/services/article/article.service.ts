@@ -21,14 +21,13 @@ export class ArticleService {
   getNewsCategories(): Observable<any> {
     return this.http.get(`${environment.huUrl}/api/article-categories`)
   }
-
-  /**
-   * Create New News
-   *
-   * @param {*} { title, news_category_id, description}
-   * @return {*}  {Observable<any>}
-   * @memberof ArticleService
-   */
+   /**
+    *
+    *
+    * @param {*} { header, video_path, thumbnail_path, body, article_category_id, tag_ids }
+    * @returns {Observable<any>}
+    * @memberof ArticleService
+    */
    createArticle({ header, video_path, thumbnail_path, body, article_category_id, tag_ids }): Observable<any> {
     return this.http.post(`${environment.huUrl}/api/articles`, {
       header,
@@ -79,5 +78,9 @@ export class ArticleService {
    */
   updateNewsById(payload): Observable<any> {
     return this.http.patch(`${environment.huUrl}/api/articles/${payload.id}`, payload)
+  }
+
+  deleteNewsById(id: any): Observable<any> {
+    return this.http.delete(`${environment.huUrl}/api/articles/${id}`)
   }
 }

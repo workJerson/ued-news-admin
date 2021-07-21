@@ -100,6 +100,28 @@ export class ArticleComponent implements OnInit {
     )
   }
 
+  deleteArticleById(id: any) {
+    this.spinner.show()
+    this.isLoading = true
+
+    this.articleService.deleteNewsById(id)
+      .subscribe((result) => {
+        if (result) {
+          this.spinner.hide()
+          this.isLoading = false
+          this.toastr.success('Article Successfully deleted', 'Success!')
+          this.getListOfNews(this.paginator)
+        }
+      }, error => {
+        this.spinner.hide()
+        this.isLoading = false
+
+        this.toastr.error("An error occurred on deleting article", 'Error!', {
+          enableHtml: true
+        })
+      })
+  }
+
   /**
    * Make Array Count For Buttons
    *
