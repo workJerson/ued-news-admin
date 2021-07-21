@@ -60,6 +60,19 @@ export class MainComponent implements OnInit {
     this.isProfileMenuOpen = !this.isProfileMenuOpen
   }
 
+  /**
+   * Route to profile page
+   *
+   * @memberof MainComponent
+   */
+   routeToProfilePage() {
+    this.router.navigate(
+      [
+        '/main/profile'
+      ]
+    )
+  }
+
     /**
    * Logs Out The Current User
    *
