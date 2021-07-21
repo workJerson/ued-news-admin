@@ -22,6 +22,26 @@ const routes: Routes = [
         loadChildren: () =>
           import('../../pages/article/article.module').then((m) => m.ArticleModule),
       },
+      {
+        path: 'article-categories',
+        loadChildren: () =>
+          import('../../pages/article-category/article-category.module').then((m) => m.ArticleCategoryModule),
+      },
+      {
+        path: 'tags',
+        loadChildren: () =>
+          import('../../pages/tags/tags.module').then((m) => m.TagsModule),
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('../../pages/user/user.module').then((m) => m.UserModule),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('../../pages/setting/setting.module').then((m) => m.SettingModule),
+      },
     ],
   },
 ];
