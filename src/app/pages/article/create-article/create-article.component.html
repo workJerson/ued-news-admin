@@ -29,9 +29,19 @@
             <option *ngFor="let category of newsCategories" [value]="category?.id">{{ category?.name }}</option>
           </select>
         </div>
+        <div class="col-span-6 sm:col-span-4">
+          <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tags
+            </label>
+          <select formControlName="tag_ids" name="tags" id="tags" autocomplete=""
+            class="form-multiselect mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray" multiple>
+            <option *ngFor="let tag of tags" [value]="tag?.id">{{ tag?.name }}</option>
+          </select>
+        </div>
         <div class="col-span-6">
+          <label for="body" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Body
+            </label>
           <!-- <angular-editor [placeholder]="'Enter text here...'" [config]="editorConfig"></angular-editor> -->
-          <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="model.editorData"
+          <ckeditor name="body" [editor]="Editor" [config]="config" [(ngModel)]="model.editorData"
             [ngModelOptions]="{standalone: true}"></ckeditor>
         </div>
       </div>

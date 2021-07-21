@@ -5,6 +5,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/services/article/article.service';
+import { TagsService } from 'src/app/services/tags/tags.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class CreateArticleComponent implements OnInit {
   public Editor = ClassicEditor;
 
   newsCategories: any = []
+  tags: any = []
 
   newsForm: FormGroup
 
@@ -59,6 +61,7 @@ export class CreateArticleComponent implements OnInit {
     private utilityService: UtilitiesService,
     private router: Router,
     private _formBuilder: FormBuilder,
+    private tagsService: TagsService,
   ) {
   }
 
@@ -81,9 +84,22 @@ export class CreateArticleComponent implements OnInit {
         this.spinner.hide()
       })
   }
-
+  getTags(){
+    this.spinner.show()
+    this.tagsService.getTagsList()
+    .subscribe((result) => {
+      if (result) {
+        console.log(result)
+        this.tags = result
+        this.spinner.hide()
+      }
+    }, error => {
+      this.spinner.hide()
+    })
+  }
   ngOnInit(): void {
     this.getNewsCategories()
+    this.getTags()
 
     this.newsForm = this._formBuilder.group(
       {
@@ -91,6 +107,7 @@ export class CreateArticleComponent implements OnInit {
         video_path: ['', Validators.required],
         thumbnail_path: ['', Validators.required],
         article_category_id: ['', Validators.required],
+        tag_ids: ['', Validators.required],
       }
     );
   }
