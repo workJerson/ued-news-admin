@@ -82,7 +82,6 @@ export class UpdateNewsComponent implements OnInit {
     this.articleService.getNewsCategories()
       .subscribe((result) => {
         if (result) {
-          console.log(result)
           this.newsCategories = result
           this.spinner.hide()
         }
@@ -154,7 +153,6 @@ export class UpdateNewsComponent implements OnInit {
     this.tagsService.getAllTagsList()
     .subscribe((result) => {
       if (result) {
-        console.log(result)
         this.tags = result
         this.spinner.hide()
       }

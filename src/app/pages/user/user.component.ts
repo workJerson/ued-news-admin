@@ -69,7 +69,6 @@ export class UserComponent implements OnInit {
   {
     this.spinner.show()
     this.isLoading = true
-    console.log(payload, 'hehe')
     this.userService.getUserList(payload)
       .subscribe((result) => {
         if (result) {

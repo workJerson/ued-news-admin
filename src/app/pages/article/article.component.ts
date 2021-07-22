@@ -77,8 +77,6 @@ export class ArticleComponent implements OnInit {
 
           this.spinner.hide()
           this.isLoading = false
-
-          console.log(this.newsList)
         }
       }, error => {
         this.spinner.hide()

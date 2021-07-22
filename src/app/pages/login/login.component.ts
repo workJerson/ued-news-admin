@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
               ]
             )
           }, 300)
-          console.log(result)
         }
       }, err => {
         this.spinner.hide()

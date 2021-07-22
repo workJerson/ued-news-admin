@@ -77,7 +77,6 @@ export class CreateArticleComponent implements OnInit {
       .subscribe((result) => {
         if (result) {
           this.newsCategories = result
-          console.log(result)
           this.spinner.hide()
         }
       }, error => {
@@ -89,7 +88,6 @@ export class CreateArticleComponent implements OnInit {
     this.tagsService.getAllTagsList()
     .subscribe((result) => {
       if (result) {
-        console.log(result)
         this.tags = result
         this.spinner.hide()
       }
@@ -121,7 +119,6 @@ export class CreateArticleComponent implements OnInit {
     this.spinner.show()
 
     var payload = this.newsForm.getRawValue()
-    console.log(payload)
     payload['body'] = this.model.editorData
 
     this.articleService.createArticle(

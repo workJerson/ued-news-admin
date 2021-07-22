@@ -107,7 +107,6 @@ export class TagsComponent implements OnInit {
   {
     this.spinner.show()
     this.isLoading = true
-    console.log(payload, 'hehe')
     this.tagsService.getTagsList(payload)
       .subscribe((result) => {
         if (result) {
