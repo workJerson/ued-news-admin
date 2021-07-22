@@ -4,7 +4,7 @@ export interface User {
   access_token: string;
   expires_at: string;
   token_type: string;
-  user: UserDetails
+  user: GetUserModel
 }
 
 export class CreateUserModel {
@@ -22,6 +22,8 @@ export class CreateUserModel {
 export class GetUserModel extends CreateUserModel{
   id: number
   status: number
+  login_attempts: number
+  email_verified_at?: string
   created_at: Date
   updated_at: Date
 }

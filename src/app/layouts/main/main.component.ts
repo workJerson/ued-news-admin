@@ -15,7 +15,7 @@ import { RootState, selectUser } from 'src/app/store';
 export class MainComponent implements OnInit {
 
   isSideMenuOpen: boolean = false;
-
+  avatar_path: string
   currentUser: User
 
   dark: boolean = false
@@ -34,6 +34,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.avatar_path = this.currentUser?.user?.avatar_path ?? 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'
   }
 
   /**
