@@ -178,7 +178,7 @@ export class UpdateNewsComponent implements OnInit {
       .subscribe((result) => {
         if (result) {
           this.spinner.hide()
-          this.toastr.success('ARticle Successfully Updated!', 'Success!')
+          this.toastr.success('Article Successfully Updated!', 'Success!')
         }
       }, err => {
         this.spinner.hide()

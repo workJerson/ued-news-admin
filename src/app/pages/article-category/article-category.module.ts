@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateArticleCategoryComponent } from './create-article-category/create-article-category.component';
-
+import { UpdateArticleCategoryComponent } from './update-article-category/update-article-category.component';
 
 @NgModule({
-  declarations: [ArticleCategoryComponent, CreateArticleCategoryComponent],
+  declarations: [ArticleCategoryComponent, CreateArticleCategoryComponent, UpdateArticleCategoryComponent],
   imports: [
     CommonModule,
     RouterModule,
