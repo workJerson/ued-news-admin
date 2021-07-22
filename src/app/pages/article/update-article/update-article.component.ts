@@ -12,49 +12,73 @@ import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 @Component({
   selector: 'app-update-news',
   templateUrl: './update-article.component.html',
-  styleUrls: ['./update-article.component.css']
+  styleUrls: ['./update-article.component.css'],
 })
 export class UpdateNewsComponent implements OnInit {
-
   public Editor = ClassicEditor;
 
-  newsCategories: any = []
-  tags: GetTagsModel[] = []
+  newsCategories: any = [];
+  tags: GetTagsModel[] = [];
 
-  newsForm: FormGroup
+  newsForm: FormGroup;
 
   public model = {
-    editorData: ''
-  }
-  newsId: any
+    editorData: '',
+  };
+  newsId: any;
 
   public config = {
     toolbar: {
       items: [
-        'heading', '|',
-        'fontfamily', 'fontsize', '|',
-        'alignment', '|',
-        'fontColor', 'fontBackgroundColor', '|',
-        'bold', 'italic', 'strikethrough', 'underline', 'superscript', '|',
-        'link', '|',
-        'outdent', 'indent', '|',
-        'bulletedList', 'numberedList', 'todoList', '|',
-        'insertTable', '|',
-        'blockQuote', '|',
-        'undo', 'redo', '|',
-        'mediaEmbed', 'autoImage', 'image', 'autoImage'
+        'heading',
+        '|',
+        'fontfamily',
+        'fontsize',
+        '|',
+        'alignment',
+        '|',
+        'fontColor',
+        'fontBackgroundColor',
+        '|',
+        'bold',
+        'italic',
+        'strikethrough',
+        'underline',
+        'superscript',
+        '|',
+        'link',
+        '|',
+        'outdent',
+        'indent',
+        '|',
+        'bulletedList',
+        'numberedList',
+        'todoList',
+        '|',
+        'insertTable',
+        '|',
+        'blockQuote',
+        '|',
+        'undo',
+        'redo',
+        '|',
+        'mediaEmbed',
+        'autoImage',
+        'image',
+        'autoImage',
       ],
-      shouldNotGroupWhenFull: true
+      shouldNotGroupWhenFull: true,
     },
     image: {
       toolbar: [
         'imageStyle:full',
         'imageStyle:side',
         '|',
-        'imageTextAlternative'
-      ]
+        'imageTextAlternative',
+      ],
     },
-  }
+    mediaEmbed: { previewsInData: true },
+  };
 
   constructor(
     private articleService: ArticleService,
@@ -67,8 +91,8 @@ export class UpdateNewsComponent implements OnInit {
     private tagsService: TagsService
   ) {
     this.newsId = this.route.snapshot.paramMap.get('id');
-    this.getNewsById()
-    this.getTags()
+    this.getNewsById();
+    this.getTags();
   }
 
   /**
@@ -77,32 +101,32 @@ export class UpdateNewsComponent implements OnInit {
    * @memberof UpdateNewsComponent
    */
   getNewsCategories() {
-    this.spinner.show()
+    this.spinner.show();
 
-    this.articleService.getNewsCategories()
-      .subscribe((result) => {
+    this.articleService.getNewsCategories().subscribe(
+      (result) => {
         if (result) {
-          this.newsCategories = result
-          this.spinner.hide()
+          this.newsCategories = result;
+          this.spinner.hide();
         }
-      }, error => {
-        this.spinner.hide()
-      })
+      },
+      (error) => {
+        this.spinner.hide();
+      }
+    );
   }
 
   ngOnInit(): void {
-    this.getNewsCategories()
+    this.getNewsCategories();
 
-    this.newsForm = this._formBuilder.group(
-      {
-        header: ['', Validators.required],
-        video_path: ['', Validators.required],
-        thumbnail_path: ['', Validators.required],
-        article_category_id: ['', Validators.required],
-        tag_ids: ['', Validators.required],
-        id: ['', Validators.required],
-      }
-    );
+    this.newsForm = this._formBuilder.group({
+      header: ['', Validators.required],
+      video_path: ['', Validators.required],
+      thumbnail_path: ['', Validators.required],
+      article_category_id: ['', Validators.required],
+      tag_ids: ['', Validators.required],
+      id: ['', Validators.required],
+    });
   }
 
   /**
@@ -111,12 +135,12 @@ export class UpdateNewsComponent implements OnInit {
    * @memberof UpdateNewsComponent
    */
   getNewsById() {
-    this.spinner.show()
+    this.spinner.show();
 
-    this.articleService.getNewsById(this.newsId)
-      .subscribe((result) => {
+    this.articleService.getNewsById(this.newsId).subscribe(
+      (result) => {
         if (result) {
-          this.spinner.hide()
+          this.spinner.hide();
 
           const {
             header,
@@ -125,40 +149,42 @@ export class UpdateNewsComponent implements OnInit {
             thumbnail_path,
             article_category_id,
             tags,
-            id
-          } = result
+            id,
+          } = result;
 
-          let tag_ids = tags.map((tag) => tag.id)
+          let tag_ids = tags.map((tag) => tag.id);
 
-          this.newsForm.patchValue(
-            {
-              header,
-              video_path,
-              thumbnail_path,
-              article_category_id,
-              tag_ids,
-              id
-            }
-          )
+          this.newsForm.patchValue({
+            header,
+            video_path,
+            thumbnail_path,
+            article_category_id,
+            tag_ids,
+            id,
+          });
 
-          this.model.editorData = body
+          this.model.editorData = body;
         }
-      }, err => {
-        this.spinner.hide()
-      })
+      },
+      (err) => {
+        this.spinner.hide();
+      }
+    );
   }
 
-  getTags(){
-    this.spinner.show()
-    this.tagsService.getAllTagsList()
-    .subscribe((result) => {
-      if (result) {
-        this.tags = result
-        this.spinner.hide()
+  getTags() {
+    this.spinner.show();
+    this.tagsService.getAllTagsList().subscribe(
+      (result) => {
+        if (result) {
+          this.tags = result;
+          this.spinner.hide();
+        }
+      },
+      (error) => {
+        this.spinner.hide();
       }
-    }, error => {
-      this.spinner.hide()
-    })
+    );
   }
 
   /**
@@ -167,25 +193,27 @@ export class UpdateNewsComponent implements OnInit {
    * @memberof UpdateNewsComponent
    */
   saveNews() {
-    this.spinner.show()
+    this.spinner.show();
 
-    var payload = this.newsForm.getRawValue()
-    payload['body'] = this.model.editorData
+    var payload = this.newsForm.getRawValue();
+    payload['body'] = this.model.editorData;
 
-    this.articleService.updateNewsById(payload)
-      .subscribe((result) => {
+    this.articleService.updateNewsById(payload).subscribe(
+      (result) => {
         if (result) {
-          this.spinner.hide()
-          this.toastr.success('Article Successfully Updated!', 'Success!')
+          this.spinner.hide();
+          this.toastr.success('Article Successfully Updated!', 'Success!');
         }
-      }, err => {
-        this.spinner.hide()
+      },
+      (err) => {
+        this.spinner.hide();
 
         let message = this.utilityService.parseError(err.errors);
 
         this.toastr.error(message, 'Error!', {
-          enableHtml: true
-        })
-      })
+          enableHtml: true,
+        });
+      }
+    );
   }
 }

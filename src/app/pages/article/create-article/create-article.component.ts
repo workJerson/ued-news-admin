@@ -11,48 +11,72 @@ import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
-  styleUrls: ['./create-article.component.css']
+  styleUrls: ['./create-article.component.css'],
 })
 export class CreateArticleComponent implements OnInit {
-
   public Editor = ClassicEditor;
 
-  newsCategories: any = []
-  tags: any = []
+  newsCategories: any = [];
+  tags: any = [];
 
-  newsForm: FormGroup
+  newsForm: FormGroup;
 
   public model = {
-    editorData: ''
-  }
+    editorData: '',
+  };
 
   public config = {
     toolbar: {
       items: [
-        'heading', '|',
-        'fontfamily', 'fontsize', '|',
-        'alignment', '|',
-        'fontColor', 'fontBackgroundColor', '|',
-        'bold', 'italic', 'strikethrough', 'underline', 'superscript', '|',
-        'link', '|',
-        'outdent', 'indent', '|',
-        'bulletedList', 'numberedList', 'todoList', '|',
-        'insertTable', '|',
-        'blockQuote', '|',
-        'undo', 'redo', '|',
-        'mediaEmbed', 'autoImage', 'image', 'autoImage'
+        'heading',
+        '|',
+        'fontfamily',
+        'fontsize',
+        '|',
+        'alignment',
+        '|',
+        'fontColor',
+        'fontBackgroundColor',
+        '|',
+        'bold',
+        'italic',
+        'strikethrough',
+        'underline',
+        'superscript',
+        '|',
+        'link',
+        '|',
+        'outdent',
+        'indent',
+        '|',
+        'bulletedList',
+        'numberedList',
+        'todoList',
+        '|',
+        'insertTable',
+        '|',
+        'blockQuote',
+        '|',
+        'undo',
+        'redo',
+        '|',
+        'mediaEmbed',
+        'autoImage',
+        'image',
+        'autoImage',
       ],
-      shouldNotGroupWhenFull: true
+      shouldNotGroupWhenFull: true,
     },
     image: {
       toolbar: [
         'imageStyle:full',
         'imageStyle:side',
         '|',
-        'imageTextAlternative'
-      ]
+        'imageTextAlternative',
+      ],
     },
-  }
+    mediaEmbed: { previewsInData: true },
+  };
 
   constructor(
     private articleService: ArticleService,
@@ -61,9 +85,8 @@ export class CreateArticleComponent implements OnInit {
     private utilityService: UtilitiesService,
     private router: Router,
     private _formBuilder: FormBuilder,
-    private tagsService: TagsService,
-  ) {
-  }
+    private tagsService: TagsService
+  ) {}
 
   /**
    * Gets News Categories from service
@@ -71,43 +94,52 @@ export class CreateArticleComponent implements OnInit {
    * @memberof CreateArticleComponent
    */
   getNewsCategories() {
-    this.spinner.show()
+    this.spinner.show();
 
-    this.articleService.getNewsCategories()
-      .subscribe((result) => {
+    this.articleService.getNewsCategories().subscribe(
+      (result) => {
         if (result) {
-          this.newsCategories = result
-          this.spinner.hide()
+          this.newsCategories = result;
+          this.spinner.hide();
         }
-      }, error => {
-        this.spinner.hide()
-      })
-  }
-  getTags(){
-    this.spinner.show()
-    this.tagsService.getAllTagsList()
-    .subscribe((result) => {
-      if (result) {
-        this.tags = result
-        this.spinner.hide()
-      }
-    }, error => {
-      this.spinner.hide()
-    })
-  }
-  ngOnInit(): void {
-    this.getNewsCategories()
-    this.getTags()
-
-    this.newsForm = this._formBuilder.group(
-      {
-        header: ['', Validators.required],
-        video_path: ['', Validators.required],
-        thumbnail_path: ['', Validators.required],
-        article_category_id: ['', Validators.required],
-        tag_ids: ['', Validators.required],
+      },
+      (error) => {
+        this.spinner.hide();
       }
     );
+  }
+
+  /**
+   * Get list of all tags
+   *
+   * @memberof CreateArticleComponent
+   */
+  getTags() {
+    this.spinner.show();
+    this.tagsService.getAllTagsList().subscribe(
+      (result) => {
+        if (result) {
+          this.tags = result;
+          this.spinner.hide();
+        }
+      },
+      (error) => {
+        this.spinner.hide();
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.getNewsCategories();
+    this.getTags();
+
+    this.newsForm = this._formBuilder.group({
+      header: ['', Validators.required],
+      video_path: ['', Validators.required],
+      thumbnail_path: ['', Validators.required],
+      article_category_id: ['', Validators.required],
+      tag_ids: ['', Validators.required],
+    });
   }
 
   /**
@@ -116,28 +148,27 @@ export class CreateArticleComponent implements OnInit {
    * @memberof CreateArticleComponent
    */
   submitNews() {
-    this.spinner.show()
+    this.spinner.show();
 
-    var payload = this.newsForm.getRawValue()
-    payload['body'] = this.model.editorData
+    var payload = this.newsForm.getRawValue();
+    payload['body'] = this.model.editorData;
 
-    this.articleService.createArticle(
-      payload
-    )
-      .subscribe((result) => {
+    this.articleService.createArticle(payload).subscribe(
+      (result) => {
         if (result) {
-          this.spinner.hide()
-          this.toastr.success('Article Successfully Created!', 'Success!')
+          this.spinner.hide();
+          this.toastr.success('Article Successfully Created!', 'Success!');
         }
-      }, err => {
-        this.spinner.hide()
+      },
+      (err) => {
+        this.spinner.hide();
 
         let message = this.utilityService.parseError(err.errors);
 
         this.toastr.error(message, 'Error!', {
-          enableHtml: true
-        })
-      })
+          enableHtml: true,
+        });
+      }
+    );
   }
-
 }
