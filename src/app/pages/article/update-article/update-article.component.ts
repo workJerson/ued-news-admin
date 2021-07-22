@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { GetTagsModel } from 'src/app/models/tags.model';
 import { ArticleService } from 'src/app/services/article/article.service';
+import { TagsService } from 'src/app/services/tags/tags.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
@@ -17,16 +19,14 @@ export class UpdateNewsComponent implements OnInit {
   public Editor = ClassicEditor;
 
   newsCategories: any = []
+  tags: GetTagsModel[] = []
 
   newsForm: FormGroup
 
   public model = {
     editorData: ''
   }
-
   newsId: any
-
-  news: any
 
   public config = {
     toolbar: {
@@ -63,11 +63,12 @@ export class UpdateNewsComponent implements OnInit {
     private utilityService: UtilitiesService,
     private router: Router,
     private _formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tagsService: TagsService
   ) {
     this.newsId = this.route.snapshot.paramMap.get('id');
-    console.log(this.newsId)
     this.getNewsById()
+    this.getTags()
   }
 
   /**
@@ -95,8 +96,12 @@ export class UpdateNewsComponent implements OnInit {
 
     this.newsForm = this._formBuilder.group(
       {
-        title: ['', Validators.required],
-        news_category_id: ['', Validators.required],
+        header: ['', Validators.required],
+        video_path: ['', Validators.required],
+        thumbnail_path: ['', Validators.required],
+        article_category_id: ['', Validators.required],
+        tag_ids: ['', Validators.required],
+        id: ['', Validators.required],
       }
     );
   }
@@ -113,21 +118,49 @@ export class UpdateNewsComponent implements OnInit {
       .subscribe((result) => {
         if (result) {
           this.spinner.hide()
-          console.log(result)
-          this.news = result
+
+          const {
+            header,
+            body,
+            video_path,
+            thumbnail_path,
+            article_category_id,
+            tags,
+            id
+          } = result
+
+          let tag_ids = tags.map((tag) => tag.id)
 
           this.newsForm.patchValue(
             {
-              title: result.title,
-              news_category_id: result.news_category_id,
+              header,
+              video_path,
+              thumbnail_path,
+              article_category_id,
+              tag_ids,
+              id
             }
           )
 
-          this.model.editorData = result.description
+          this.model.editorData = body
         }
       }, err => {
         this.spinner.hide()
       })
+  }
+
+  getTags(){
+    this.spinner.show()
+    this.tagsService.getAllTagsList()
+    .subscribe((result) => {
+      if (result) {
+        console.log(result)
+        this.tags = result
+        this.spinner.hide()
+      }
+    }, error => {
+      this.spinner.hide()
+    })
   }
 
   /**
@@ -139,18 +172,13 @@ export class UpdateNewsComponent implements OnInit {
     this.spinner.show()
 
     var payload = this.newsForm.getRawValue()
-    payload['description'] = this.model.editorData
+    payload['body'] = this.model.editorData
 
-    this.articleService.updateNewsById(
-      {
-        ...payload,
-        id: this.newsId
-      }
-    )
+    this.articleService.updateNewsById(payload)
       .subscribe((result) => {
         if (result) {
           this.spinner.hide()
-          this.toastr.success('News Successfully Updated!', 'Success!')
+          this.toastr.success('ARticle Successfully Updated!', 'Success!')
         }
       }, err => {
         this.spinner.hide()

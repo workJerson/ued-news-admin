@@ -6,10 +6,11 @@ import { ArticleCategoryComponent } from './article-category.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CreateArticleCategoryComponent } from './create-article-category/create-article-category.component';
 
 
 @NgModule({
-  declarations: [ArticleCategoryComponent],
+  declarations: [ArticleCategoryComponent, CreateArticleCategoryComponent],
   imports: [
     CommonModule,
     RouterModule,

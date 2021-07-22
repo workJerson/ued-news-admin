@@ -76,7 +76,7 @@ export class ArticleService {
    * @return {*}  {Observable<any>}
    * @memberof ArticleService
    */
-  updateNewsById(payload): Observable<any> {
+  updateNewsById(payload: any): Observable<any> {
     return this.http.patch(`${environment.huUrl}/api/articles/${payload.id}`, payload)
   }
 

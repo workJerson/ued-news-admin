@@ -3,16 +3,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { ArticleCategoryService } from 'src/app/services/article-category/article-category.service';
+import { TagsService } from 'src/app/services/tags/tags.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
-  selector: 'app-create-article-category',
-  templateUrl: './create-article-category.component.html',
-  styleUrls: ['./create-article-category.component.css']
+  selector: 'app-create-tags',
+  templateUrl: './create-tags.component.html',
+  styleUrls: ['./create-tags.component.css']
 })
-export class CreateArticleCategoryComponent implements OnInit {
-  categoryForm: FormGroup
+export class CreateTagsComponent implements OnInit {
+
+  tagsForm: FormGroup
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -20,24 +21,24 @@ export class CreateArticleCategoryComponent implements OnInit {
     private utilityService: UtilitiesService,
     private router: Router,
     private _formBuilder: FormBuilder,
-    private articleCategoryService: ArticleCategoryService
+    private tagsService: TagsService
   ) { }
 
   ngOnInit(): void {
 
-    this.categoryForm = this._formBuilder.group(
+    this.tagsForm = this._formBuilder.group(
       {
         name: ['', Validators.required],
-        description: ['', Validators.required],
       }
     );
   }
-  submitCategory()
+
+  submitTag()
   {
     this.spinner.show()
-    var payload = this.categoryForm.getRawValue()
-    this.articleCategoryService
-      .createArticleCategory(payload)
+    var payload = this.tagsForm.getRawValue()
+    this.tagsService
+    .createTag(payload)
         .subscribe((result) => {
           if (result) {
             this.spinner.hide()
@@ -52,6 +53,6 @@ export class CreateArticleCategoryComponent implements OnInit {
             enableHtml: true
           })
         })
-    }
+  }
 
 }

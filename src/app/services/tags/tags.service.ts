@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,10 +19,19 @@ export class TagsService {
    * @returns {Observable<any>}
    * @memberof TagsService
    */
-  getTagsList(params = ''): Observable<any> {
+  getTagsList({current_page, per_page, search}): Observable<any> {
+    let params = new HttpParams()
+    .set('page', current_page)
+    .set('per_page', per_page)
+    .set('sort', '-id')
+    .set('search', search)
+
     return this.http.get(`${environment.huUrl}/api/tags?${params}`)
   }
+  getAllTagsList(): Observable<any>{
 
+    return this.http.get(`${environment.huUrl}/api/tags`)
+  }
   /**
    * Create new Tag record
    *
