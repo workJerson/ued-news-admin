@@ -28,7 +28,6 @@ export class MainComponent implements OnInit {
   ) {
     this.store.pipe(select(selectUser), take(1))
       .subscribe((result) => {
-        console.log(result)
         this.currentUser = result
       })
   }

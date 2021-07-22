@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  huUrl: 'http://127.0.0.1:8000',
+  huUrl: 'https://ued-news-api-dev.u-ed.net',
 };
 
 /*

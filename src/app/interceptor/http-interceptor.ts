@@ -42,7 +42,7 @@ export class HttpInterceptorService implements HttpInterceptor {
    *
    * Injects Token
    * @param {HttpRequest<any>} request
-   * @return {*} 
+   * @return {*}
    * @memberof HttpInterceptorService
    */
   injectToken(request: HttpRequest<any>) {
@@ -70,7 +70,6 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     return next.handle(this.injectToken(req)).pipe(
       tap((evt: any) => {
-        console.log(evt.url)
         if (evt instanceof HttpResponse) {
           // if(evt.body && evt.status === 200) {
           //   if (evt.url.includes('login')) {
@@ -105,7 +104,6 @@ export class HttpInterceptorService implements HttpInterceptor {
         this.currentRequestCount--;
         if (this.currentRequestCount === 0) {
           // hide loading spinner if all requests are done
-          console.log('All requests are done');
         }
       })
     );
