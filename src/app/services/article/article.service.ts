@@ -28,7 +28,7 @@ export class ArticleService {
     * @returns {Observable<any>}
     * @memberof ArticleService
     */
-   createArticle({ header, video_path, thumbnail_path, body, article_category_id, tag_ids }): Observable<any> {
+   createArticle({ header, video_path, thumbnail_path, body, article_category_id, tag_ids, short_description }): Observable<any> {
     return this.http.post(`${environment.huUrl}/api/articles`, {
       header,
       video_path,
@@ -36,6 +36,7 @@ export class ArticleService {
       body,
       article_category_id,
       tag_ids,
+      short_description
     })
   }
 

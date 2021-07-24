@@ -137,6 +137,7 @@ export class CreateArticleComponent implements OnInit {
       header: ['', Validators.required],
       video_path: ['', Validators.required],
       thumbnail_path: ['', Validators.required],
+      short_description: ['', Validators.required],
       article_category_id: ['', Validators.required],
       tag_ids: ['', Validators.required],
     });
