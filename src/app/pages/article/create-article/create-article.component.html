@@ -7,52 +7,223 @@
     <form [formGroup]="newsForm">
       <div class="grid grid-cols-6 gap-6">
         <div class="col-span-6 sm:col-span-4">
-          <label for="header" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Header</label>
-          <input formControlName="header" type="text" name="header" id="header" autocomplete=""
-            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+          <label
+            for="header"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Header</label
+          >
+          <input
+            formControlName="header"
+            type="text"
+            name="header"
+            id="header"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-blue-500 focus:border-blue-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
         </div>
         <div class="col-span-6 sm:col-span-4">
-          <label for="video_path" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Video Path</label>
-          <input formControlName="video_path" type="text" name="video_path" id="video_path" autocomplete=""
-            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+          <label
+            for="video_path"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Video Path</label
+          >
+          <input
+            formControlName="video_path"
+            type="text"
+            name="video_path"
+            id="video_path"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-blue-500 focus:border-blue-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
         </div>
         <div class="col-span-6 sm:col-span-4">
-          <label for="thumbnail_path" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Thumbnail Path</label>
-          <input formControlName="thumbnail_path" type="text" name="thumbnail_path" id="thumbnail_path" autocomplete=""
-            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+          <label
+            for="thumbnail_path"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Thumbnail Path</label
+          >
+          <input
+            formControlName="thumbnail_path"
+            type="text"
+            name="thumbnail_path"
+            id="thumbnail_path"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-blue-500 focus:border-blue-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
         </div>
         <div class="col-span-6 sm:col-span-4">
-          <label for="short_description" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Short Description</label>
-          <input formControlName="short_description" type="text" name="short_description" id="short_description" autocomplete=""
-            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
+          <label
+            for="short_description"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Short Description</label
+          >
+          <input
+            formControlName="short_description"
+            type="text"
+            name="short_description"
+            id="short_description"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-blue-500 focus:border-blue-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          />
         </div>
         <div class="col-span-6 sm:col-span-4">
-          <label for="article_category" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Article
-            Category</label>
-          <select formControlName="article_category_id" name="article_category" id="article_category" autocomplete=""
-            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray">
-            <option *ngFor="let category of newsCategories" [value]="category?.id">{{ category?.name }}</option>
+          <label
+            for="article_category"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Article Category</label
+          >
+          <select
+            formControlName="article_category_id"
+            name="article_category"
+            id="article_category"
+            autocomplete=""
+            class="
+              mt-1
+              focus:ring-blue-500 focus:border-blue-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+          >
+            <option
+              *ngFor="let category of newsCategories"
+              [value]="category?.id"
+            >
+              {{ category?.name }}
+            </option>
           </select>
         </div>
         <div class="col-span-6 sm:col-span-4">
-          <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tags
-            </label>
-          <select formControlName="tag_ids" name="tags" id="tags" autocomplete=""
-            class="form-multiselect mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray" multiple>
-            <option *ngFor="let tag of tags" [value]="tag?.id">{{ tag?.name }}</option>
+          <label
+            for="tags"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Tags
+          </label>
+          <select
+            formControlName="tag_ids"
+            name="tags"
+            id="tags"
+            autocomplete=""
+            class="
+              form-multiselect
+              mt-1
+              focus:ring-blue-500 focus:border-blue-500
+              block
+              w-full
+              shadow-sm
+              sm:text-sm
+              border-gray-300
+              rounded-md
+              dark:border-gray-600
+              dark:bg-gray-700
+              dark:text-gray-300
+              dark:focus:shadow-outline-gray
+            "
+            multiple
+          >
+            <option *ngFor="let tag of tags" [value]="tag?.id">
+              {{ tag?.name }}
+            </option>
           </select>
         </div>
         <div class="col-span-6">
-          <label for="body" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Body
-            </label>
+          <label
+            for="body"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >Body
+          </label>
           <!-- <angular-editor [placeholder]="'Enter text here...'" [config]="editorConfig"></angular-editor> -->
-          <ckeditor name="body" [editor]="Editor" [config]="config" [(ngModel)]="model.editorData"
-            [ngModelOptions]="{standalone: true}"></ckeditor>
+          <ckeditor
+            name="body"
+            [editor]="Editor"
+            [config]="config"
+            [(ngModel)]="model.editorData"
+            [ngModelOptions]="{ standalone: true }"
+          ></ckeditor>
         </div>
       </div>
       <div class="flex justify-end mt-4">
-        <button (click)="submitNews()"
-          class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+        <button
+          (click)="submitNews()"
+          class="
+            flex
+            items-center
+            justify-between
+            px-4
+            py-2
+            text-sm
+            font-medium
+            leading-5
+            text-white
+            transition-colors
+            duration-150
+            bg-blue-600
+            border border-transparent
+            rounded-lg
+            active:bg-blue-600
+            hover:bg-blue-700
+            focus:outline-none focus:shadow-outline-blue
+          "
+        >
           Submit
         </button>
       </div>

@@ -18,13 +18,12 @@
         text-white
         transition-colors
         duration-150
-        bg-purple-600
+        bg-blue-500
         border border-transparent
         rounded-lg
-        active:bg-purple-600
-        hover:bg-purple-700
-        focus:outline-none
-        focus:shadow-outline-purple
+        active:bg-blue-600
+        hover:bg-blue-700
+        focus:outline-none focus:shadow-outline-blue
       "
     >
       Create Article
@@ -44,8 +43,7 @@
               border-b
               dark:border-gray-700
               bg-gray-50
-              dark:text-gray-400
-              dark:bg-gray-800
+              dark:text-gray-400 dark:bg-gray-800
             "
           >
             <th class="px-4 py-3">Header</th>
@@ -95,11 +93,10 @@
                       text-sm
                       font-medium
                       leading-5
-                      text-purple-600
+                      text-blue-600
                       rounded-lg
                       dark:text-gray-400
-                      focus:outline-none
-                      focus:shadow-outline-gray
+                      focus:outline-none focus:shadow-outline-gray
                     "
                     aria-label="Edit"
                   >
@@ -125,11 +122,10 @@
                       text-sm
                       font-medium
                       leading-5
-                      text-purple-600
+                      text-blue-600
                       rounded-lg
                       dark:text-gray-400
-                      focus:outline-none
-                      focus:shadow-outline-gray
+                      focus:outline-none focus:shadow-outline-gray
                     "
                     aria-label="Delete"
                   >
@@ -178,8 +174,7 @@
         dark:border-gray-700
         bg-gray-50
         sm:grid-cols-9
-        dark:text-gray-400
-        dark:bg-gray-800
+        dark:text-gray-400 dark:bg-gray-800
       "
     >
       <span class="flex items-center col-span-3">
@@ -197,8 +192,7 @@
                   px-3
                   py-1
                   rounded-md rounded-l-lg
-                  focus:outline-none
-                  focus:shadow-outline-purple
+                  focus:outline-none focus:shadow-outline-blue
                 "
                 aria-label="Previous"
                 (click)="movePage(paginator?.current_page - 1)"
@@ -235,11 +229,10 @@
                       text-white
                       transition-colors
                       duration-150
-                      bg-purple-600
-                      border border-r-0 border-purple-600
+                      bg-blue-600
+                      border border-r-0 border-blue-600
                       rounded-md
-                      focus:outline-none
-                      focus:shadow-outline-purple
+                      focus:outline-none focus:shadow-outline-blue
                     "
                   >
                     {{ pageNumber }}
@@ -252,8 +245,7 @@
                       px-3
                       py-1
                       rounded-md
-                      focus:outline-none
-                      focus:shadow-outline-purple
+                      focus:outline-none focus:shadow-outline-blue
                     "
                   >
                     {{ pageNumber }}
@@ -268,8 +260,7 @@
                   px-3
                   py-1
                   rounded-md rounded-r-lg
-                  focus:outline-none
-                  focus:shadow-outline-purple
+                  focus:outline-none focus:shadow-outline-blue
                 "
                 aria-label="Next"
                 [disabled]="paginator?.last_page === paginator?.current_page"
